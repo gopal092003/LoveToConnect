@@ -1,54 +1,60 @@
-# ❤️ LoveToConnect
+# LoveToConnect
 
-A full-stack language exchange platform that helps people connect with native speakers, practice new languages through real conversations, and build friendships across cultures.
+LoveToConnect is a full-stack language exchange platform that helps people connect with native speakers, practice new languages through real-time conversations, and build friendships across different cultures.
 
-Users can create profiles, discover language partners based on their learning goals, send friend requests, chat in real time, and start video calls directly within the platform.
+Users can create profiles, discover language partners based on their learning goals, send friend requests, exchange messages, and start video calls directly within the application.
 
-This project was built to gain hands-on experience with real-time communication systems, third-party SDK integration, authentication, and full-stack application architecture.
+The project was built to explore real-time communication systems, third-party SDK integration, authentication, and scalable full-stack application development.
 
 ---
 
-## ✨ Features
+## Overview
 
-### 👤 User Authentication
+The platform enables users to find compatible language partners based on the languages they speak and want to learn. It combines user authentication, social networking features, real-time messaging, and video calling into a single application with a responsive interface.
 
-* Sign up and log in securely
-* JWT authentication using httpOnly cookies
+---
+
+## Features
+
+### User Authentication
+
+* Secure user registration and login
+* JWT authentication using HTTP-only cookies
 * Persistent user sessions
 
-### 🌍 Language Partner Discovery
+### Language Partner Discovery
 
-* Set your native language and learning language
-* Get recommendations for potential language partners
-* View user profiles and bios
+* Set native and learning languages
+* Discover recommended language partners
+* View user profiles and biographies
 
-### 🤝 Friend System
+### Friend Management
 
 * Send friend requests
-* Accept or reject incoming requests
-* Manage your connections
+* Accept or decline requests
+* Manage existing connections
 
-### 💬 Real-Time Messaging
+### Real-Time Messaging
 
-* One-on-one chat powered by Stream Chat
+* One-to-one messaging using Stream Chat
 * Instant message delivery
 * Conversation history
 
-### 📹 Video Calling
+### Video Calling
 
-* Start video calls directly from chat
-* Share join links through messages
+* Start video calls directly from conversations
+* Share meeting links through chat
 * Real-time communication powered by Stream Video
 
-### 🎨 Customizable UI
+### User Interface
 
-* 32 DaisyUI themes
-* Theme preference persisted across sessions
-* Fully responsive design
+* Responsive layout
+* Multiple DaisyUI themes
+* Persistent theme preferences
 
 ---
 
-## 🛠 Tech Stack
+## Technology Stack
 
 ### Frontend
 
@@ -76,89 +82,92 @@ This project was built to gain hands-on experience with real-time communication 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-```text
+```
 LoveToConnect/
+│
 ├── backend/
 │   └── src/
 │       ├── controllers/
+│       ├── lib/
 │       ├── middleware/
 │       ├── models/
 │       ├── routes/
-│       ├── lib/
 │       └── server.js
 │
 ├── frontend/
 │   └── src/
 │       ├── components/
-│       ├── pages/
+│       ├── constants/
 │       ├── hooks/
-│       ├── store/
 │       ├── lib/
-│       └── constants/
+│       ├── pages/
+│       └── store/
 │
 └── package.json
 ```
 
 ---
 
-## 🔌 API Overview
+## API Overview
 
 ### Authentication
 
-| Method | Endpoint               | Description            |
-| ------ | ---------------------- | ---------------------- |
-| POST   | `/api/auth/signup`     | Create account         |
-| POST   | `/api/auth/login`      | Login user             |
-| POST   | `/api/auth/logout`     | Logout user            |
-| POST   | `/api/auth/onboarding` | Complete profile setup |
-| GET    | `/api/auth/me`         | Get current user       |
+| Method | Endpoint               | Description               |
+| ------ | ---------------------- | ------------------------- |
+| POST   | `/api/auth/signup`     | Register a new user       |
+| POST   | `/api/auth/login`      | Authenticate a user       |
+| POST   | `/api/auth/logout`     | End the current session   |
+| POST   | `/api/auth/onboarding` | Complete profile setup    |
+| GET    | `/api/auth/me`         | Retrieve the current user |
 
 ### Users
 
-| Method | Endpoint                               | Description         |
-| ------ | -------------------------------------- | ------------------- |
-| GET    | `/api/users`                           | Recommended users   |
-| GET    | `/api/users/friends`                   | Friend list         |
-| POST   | `/api/users/friend-request/:id`        | Send friend request |
-| PUT    | `/api/users/friend-request/:id/accept` | Accept request      |
-| GET    | `/api/users/friend-requests`           | Incoming requests   |
-| GET    | `/api/users/outgoing-friend-requests`  | Sent requests       |
+| Method | Endpoint                               | Description                |
+| ------ | -------------------------------------- | -------------------------- |
+| GET    | `/api/users`                           | Retrieve recommended users |
+| GET    | `/api/users/friends`                   | Retrieve friend list       |
+| POST   | `/api/users/friend-request/:id`        | Send a friend request      |
+| PUT    | `/api/users/friend-request/:id/accept` | Accept a friend request    |
+| GET    | `/api/users/friend-requests`           | Retrieve incoming requests |
+| GET    | `/api/users/outgoing-friend-requests`  | Retrieve outgoing requests |
 
 ### Chat
 
-| Method | Endpoint          | Description           |
-| ------ | ----------------- | --------------------- |
-| GET    | `/api/chat/token` | Generate Stream token |
+| Method | Endpoint          | Description                            |
+| ------ | ----------------- | -------------------------------------- |
+| GET    | `/api/chat/token` | Generate a Stream authentication token |
 
 ---
 
-## 🚀 Running Locally
+## Installation
 
 ### Prerequisites
 
-* Node.js 22+
-* MongoDB Atlas or local MongoDB instance
+* Node.js 22 or later
+* MongoDB Atlas or a local MongoDB instance
 * Stream account for Chat and Video APIs
 
-### 1. Clone the Repository
+---
 
-```bash
+## Clone the Repository
+
+```
 git clone https://github.com/gopal092003/LoveToConnect.git
+
 cd LoveToConnect
 ```
 
-### 2. Backend Environment Variables
+---
 
-Create:
+## Backend Configuration
 
-```bash
-backend/.env
-```
+Create a `.env` file inside the `backend` directory.
 
 ```env
 PORT=5001
+
 MONGO_URI=your_mongodb_connection_string
 
 JWT_SECRET_KEY=your_jwt_secret
@@ -169,48 +178,49 @@ STREAM_API_SECRET=your_stream_api_secret
 NODE_ENV=development
 ```
 
-### 3. Frontend Environment Variables
+Install dependencies:
 
-Create:
-
-```bash
-frontend/.env
 ```
+cd backend
+
+npm install
+```
+
+Start the development server:
+
+```
+npm run dev
+```
+
+---
+
+## Frontend Configuration
+
+Create a `.env` file inside the `frontend` directory.
 
 ```env
 VITE_STREAM_API_KEY=your_stream_api_key
+
 VITE_APP_BACKEND_URL=http://localhost:5001
 ```
 
-### 4. Install Dependencies
+Install dependencies:
 
-Backend:
-
-```bash
-cd backend
-npm install
 ```
-
-Frontend:
-
-```bash
 cd frontend
+
 npm install
 ```
 
-### 5. Start Development Servers
+Start the development server:
 
-Backend:
-
-```bash
+```
 npm run dev
 ```
 
-Frontend (in a separate terminal):
+---
 
-```bash
-npm run dev
-```
+## Local Development
 
 Frontend:
 
@@ -226,53 +236,59 @@ http://localhost:5001
 
 ---
 
-## 🏗 Production Build
+## Production Build
 
 Build the application:
 
-```bash
+```
 npm run build
 ```
 
-Start the server:
+Start the production server:
 
-```bash
+```
 npm start
 ```
 
-The backend is configured to serve the frontend build files, enabling deployment as a single service.
+The backend is configured to serve the frontend build, allowing deployment as a single application.
 
 ---
 
-## 🎯 What I Learned
+## What I Learned
 
-* Building a complete full-stack application from scratch
-* JWT authentication and secure session management
-* MongoDB data modeling with Mongoose
+This project provided hands-on experience with:
+
+* Building a full-stack application using React and Express
+* Implementing JWT-based authentication
+* Designing MongoDB schemas with Mongoose
 * Integrating Stream Chat and Stream Video SDKs
-* Managing server state with TanStack Query
+* Managing asynchronous server state with TanStack Query
 * Global state management with Zustand
-* Designing responsive and themeable user interfaces
-* Structuring scalable frontend and backend architectures
+* Building responsive and customizable user interfaces
+* Organizing scalable frontend and backend architectures
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * Group conversations
 * Audio-only calls
-* Advanced user matching based on interests
-* Language proficiency levels
+* Interest-based user matching
+* Language proficiency tracking
 * Push notifications
 * User blocking and reporting
 * Online presence indicators
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-**Gopal**
+**Gopal Gupta**
 
 GitHub: https://github.com/gopal092003
 
-If you found this project interesting, feel free to star the repository.
+---
+
+## License
+
+This project is intended for educational purposes and personal learning.
